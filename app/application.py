@@ -7,6 +7,7 @@ from app.configs import get_logger
 from app.worker import KombuWorker
 from app.worker.utils import start_connection_bus
 from app.utils import generate_client
+from app.callbacks import SendRegistrationCallback
 
 _logger = get_logger(name=__name__)
 
@@ -19,9 +20,11 @@ class Application:
 
         client = generate_client()
 
-        register = RegisterQueues(client_name=client.name)
+        register_queue = RegisterQueues(client_name=client.name)
+        queues = register_queue.register()
 
-        queues = register.register()
+        SendRegistrationCallback().handle(client)
+
         self.start_consuming(queues)
 
     def start_consuming(self, queues):

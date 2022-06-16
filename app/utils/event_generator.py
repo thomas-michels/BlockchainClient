@@ -10,6 +10,7 @@ def generate_event(client_id: str, send_to: str, payload: dict) -> EventSchema:
     """
     Function to generate valid EventSchema
 
+    :param client_id: str
     :param send_to: Name of queue to send this message
     :param payload: Payload of event
 
