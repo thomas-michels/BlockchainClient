@@ -13,11 +13,19 @@ class RegisterQueues:
     RegisterQueues class
     """
 
-    @staticmethod
-    def register() -> QueueManager:
+    def __init__(self, client_name: str = "") -> None:
+        self.__client_queue = client_name
+
+    def register(self) -> QueueManager:
         _logger.info("Starting QueueManager")
         queue_manager = QueueManager()
+
+        if self.__client_queue:
+            queue_manager.register_callback(self.__client_queue, teste)
 
         _logger.info("All queues started")
 
         return queue_manager
+
+def teste(message) -> bool:
+    _logger.info(f"{message}")
