@@ -33,5 +33,4 @@ class Application:
 
         except KeyboardInterrupt:
             _logger.info("Exiting...")
-            # queues.delete_queue("TESTE")
             quit()

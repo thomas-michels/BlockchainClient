@@ -86,7 +86,3 @@ class QueueManager(metaclass=SingletonMeta):
         for callback in self._queues:
             if callback.get_queue_name() == queue_name.upper():
                 return callback.get_queue()
-
-    def delete_queue(self, queue_name: str) -> None:
-        queue = self.get_queue_by_name(queue_name)
-        queue.delete()
