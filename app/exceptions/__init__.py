@@ -15,3 +15,5 @@ from app.exceptions.callback_exceptions import (
     FunctionAnnotation,
     QueueNotFound,
 )
+
+from app.exceptions.chain_exceptions import InvalidChain
