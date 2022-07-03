@@ -23,6 +23,9 @@ class Environment(BaseSettings):
     VALIDATE_CHANNEL: str
     POW_FUNCTION: str
     VALIDATE_FUNCTION: str
+    STOP_POW_FUNCTION: str
+    POW_ACTIVE = False
+    NEW_BLOCK_FUNCTION: str
 
     class Config:
         """Load config file"""

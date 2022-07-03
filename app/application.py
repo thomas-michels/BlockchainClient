@@ -17,13 +17,16 @@ class Application:
 
     def __init__(self) -> None:
         _logger.info("Creating Connection...")
-
-        client = generate_client()
+        # account_number = int(input("Insira o número da sua conta: "))
+        account_number = 315007
+        client = generate_client(account_number)
 
         register_queue = RegisterQueues(client_name=client.name)
         queues = register_queue.register()
 
         SendRegistrationCallback().handle(client)
+
+        _logger.info(f"Tokens will be sended for account with number {account_number}")
 
         self.start_consuming(queues)
 

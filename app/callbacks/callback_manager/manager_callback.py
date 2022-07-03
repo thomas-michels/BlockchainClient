@@ -4,7 +4,8 @@
 from app.callbacks.callback_interface import CallbackInterface
 from app.shared_schemas import EventClientSchema
 from app.callbacks.validate_chain_callbacks import ValidateChain
-from app.callbacks.client_callbacks import POWCallback
+from app.callbacks.client_callbacks import POWCallback, StopPOWCallback
+from app.callbacks.block_callbacks import NewBlockCallback
 from app.configs import get_logger, get_environment
 
 _logger = get_logger(name=__name__)
@@ -23,6 +24,12 @@ class ManagerCallback(CallbackInterface):
 
             elif message.function == _env.POW_FUNCTION:
                 return POWCallback().handle(message)
+
+            elif message.function == _env.STOP_POW_FUNCTION:
+                return StopPOWCallback().handle(message)
+
+            elif message.function == _env.NEW_BLOCK_FUNCTION:
+                return NewBlockCallback().handle(message)
 
             return False
 

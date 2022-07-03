@@ -1,0 +1,1 @@
+from app.callbacks.block_callbacks.new_block_callback import NewBlockCallback

@@ -17,7 +17,7 @@ class SendRegistrationCallback(CallbackInterface):
     """
 
     def handle(self, message: SimpleClientSchema) -> bool:
-        event = generate_event(message.client_id, _env.REGISTER_CHANNEL, message.dict())
+        event = generate_event(_env.REGISTER_CHANNEL, message.dict())
         KombuProducer.send_messages(event)
         _logger.info(f"Client Registred with name {message.name}")
         return True

@@ -7,6 +7,7 @@ from app.configs import get_logger
 from app.exceptions import QueueNotFound
 from app.worker.consumer.manager import QueueManager
 from app.utils import payload_conversor
+import asyncio
 
 _logger = get_logger(name=__name__)
 
