@@ -1,7 +1,7 @@
 """
     Module for Validate event
 """
-from app.shared_schemas import EventSchema
+from app.shared_schemas import EventClientSchema
 from pydantic.error_wrappers import ValidationError
 import json
 from app.configs import get_logger
@@ -9,7 +9,7 @@ from app.configs import get_logger
 _logger = get_logger(name=__name__)
 
 
-def payload_conversor(raw_payload) -> EventSchema:
+def payload_conversor(raw_payload) -> EventClientSchema:
     """
     Function to convert raw payload in EventSchema
 
@@ -20,7 +20,7 @@ def payload_conversor(raw_payload) -> EventSchema:
         if type(raw_payload) != dict:
             raw_payload = json.loads(raw_payload)
 
-        return EventSchema(**raw_payload)
+        return EventClientSchema(**raw_payload)
 
     except ValidationError as err:
         _logger.error(

@@ -21,6 +21,8 @@ class Environment(BaseSettings):
     ELECTION_CHANNEL: str
     REGISTER_CHANNEL: str
     VALIDATE_CHANNEL: str
+    POW_FUNCTION: str
+    VALIDATE_FUNCTION: str
 
     class Config:
         """Load config file"""

@@ -3,7 +3,7 @@
 """
 from app.worker.consumer.manager import QueueManager
 from app.configs import get_logger, get_environment
-from app.callbacks import ValidateChain
+from app.callbacks import ManagerCallback
 
 _logger = get_logger(name=__name__)
 _env = get_environment()
@@ -22,7 +22,7 @@ class RegisterQueues:
         queue_manager = QueueManager()
 
         if self.__client_queue:
-            queue_manager.register_callback(self.__client_queue, ValidateChain().handle)
+            queue_manager.register_callback(self.__client_queue, ManagerCallback().handle)
 
         _logger.info("All queues started")
 
