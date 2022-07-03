@@ -23,7 +23,7 @@ class ValidateChain(CallbackInterface):
             for i in range(len(blocks) - 1):
                 current = blocks[i]
                 next = blocks[i + 1]
-                if current["hash"] != next["previous_hash"] or self.__validate_current_hash(current):
+                if current["hash"] != next["previous_hash"]:
                     raise InvalidChain()
 
             _logger.info("Blockchain validated with success")
