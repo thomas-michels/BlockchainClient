@@ -24,11 +24,13 @@ class POWCallback(CallbackInterface):
             _env.POW_ACTIVE = True
             hash_nonce = message.payload["nonce"]
             hash_atual = ""
+            tries = 0
             while _env.POW_ACTIVE and hash_nonce != hash_atual:
-                nonce = randint(100, 900)
+                nonce = str(randint(100, 900))
                 hash_atual = generate_hash(nonce)
+                tries += 1
 
-            _logger.info("POW completed")
+            _logger.info(f"POW completed. Tries: {tries}")
             # if hash_nonce == hash_atual:
             payload = {
                 "client_name": message.sended_to,
