@@ -17,8 +17,7 @@ class Application:
 
     def __init__(self) -> None:
         _logger.info("Creating Connection...")
-        # account_number = int(input("Insira o número da sua conta: "))
-        account_number = 315007
+        account_number = int(input("Insira o número da sua conta: "))
         client = generate_client(account_number)
 
         register_queue = RegisterQueues(client_name=client.name)
